@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.macsen.message.mapper.MessageMapper">
+
+    <resultMap id="message" type="Message">
+        <id column="message_id" property="id" />
+        <result column="message_name" property="name" />
+        <result column="message_comment" property="comment" />
+        <result column="message_mail" property="mail" />
+        <result column="message_system_info" property="systemInfo" />
+        <result column="message_create_time" property="createTime" />
+        <result column="message_is_review" property="isReview" />
+        <result column="message_is_author" property="isAuthor" />
+        <collection property="replies" ofType="MessageReply">
+            <id column="message_reply_from_id" property="fromId" />
+            <result column="message_reply_from_name" property="fromName" />
+            <result column="message_reply_to_id" property="toId" />
+            <result column="message_reply_to_name" property="toName" />
+            <result column="message_reply_reply_type" property="replyType" />
+            <result column="message_reply_comment_id" property="commentId" />
+            <result column="message_reply_comment" property="comment" />
+            <result column="message_reply_mail" property="mail" />
+            <result column="message_reply_system_info" property="systemInfo" />
+            <result column="message_reply_create_time" property="createTime" />
+            <result column="message_reply_is_author" property="isAuthor" />
+            <result column="message_reply_is_review" property="isReview" />
+        </collection>
+    </resultMap>
+
+    <select id="findAllMessage" resultMap="message">
+        SELECT
+            message.id message_id,
+            message.name message_name,
+            message.comment message_comment,
+            message.mail message_mail,
+            message.system_info message_system_info,
+            message.create_time message_create_time,
+            message.is_review message_is_review,
+            message.is_author message_is_author,
+            message_reply.from_id message_reply_from_id,
+            message_reply.from_name message_reply_from_name,
+            message_reply.to_id message_reply_to_id,
+            message_reply.to_name message_reply_to_name,
+            message_reply.reply_type message_reply_reply_type,
+            message_reply.comment_id message_reply_comment_id,
+            message_reply.comment message_reply_comment,
+            message_reply.mail message_reply_mail,
+            message_reply.system_info message_reply_system_info,
+            message_reply.create_time message_reply_create_time,
+            message_reply.is_author message_reply_is_author,
+            message_reply.is_review message_reply_is_review
+        FROM
+            message
+        LEFT JOIN
+            message_reply
+        ON
+            message.id = message_reply.comment_id
+        ORDER BY
+            message.id ASC
+    </select>
+
+</mapper>

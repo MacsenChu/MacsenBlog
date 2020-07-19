@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-gateway/blog-gateway-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-registry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-about-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-article-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-info-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-message-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-service/blog-service-about/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-service/blog-service-article/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-service/blog-service-info/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/blog-parent/blog-service/blog-service-message/src/main/java" charset="UTF-8" />
+  </component>
+</project>

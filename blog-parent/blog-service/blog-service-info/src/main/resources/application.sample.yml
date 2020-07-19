@@ -1,0 +1,38 @@
+server:
+  port: 18081
+spring:
+  application:
+    name: info
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://xxxxxxxxxx:3306/macsen_blog_info?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: xxxxxxxx
+    password: xxxxxxxxx
+    hikari:
+      read-only: false
+      connection-timeout: 60000
+      idle-timeout: 60000
+      validation-timeout: 3000
+      max-lifetime: 60000
+      login-timeout: 5
+      maximum-pool-size: 60
+      minimum-idle: 10
+  data:
+    mongodb:
+      host: http://xxxxxxx/
+      port: 27017
+      database: macsen_blog_info
+      username: xxxxxxx
+      password: xxxxxxxxx
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    prefer-ip-address: true
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: xyz.macsen.info.pojo

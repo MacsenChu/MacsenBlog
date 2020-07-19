@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="blog-common" />
+        <module name="blog-service-about-api" />
+        <module name="blog-service-message-api" />
+        <module name="blog-service-info-api" />
+        <module name="blog-gateway-web" />
+        <module name="blog-service-about" />
+        <module name="blog-service-info" />
+        <module name="blog-service-message" />
+        <module name="blog-registry" />
+        <module name="blog-service-article" />
+        <module name="blog-service-article-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="12">
+      <module name="blog-common" target="1.8" />
+      <module name="blog-gateway" target="1.8" />
+      <module name="blog-gateway-web" target="1.8" />
+      <module name="blog-parent" target="1.8" />
+      <module name="blog-registry" target="1.8" />
+      <module name="blog-service" target="1.8" />
+      <module name="blog-service-about" target="1.8" />
+      <module name="blog-service-about-api" target="1.8" />
+      <module name="blog-service-api" target="1.8" />
+      <module name="blog-service-article" target="1.8" />
+      <module name="blog-service-article-api" target="1.8" />
+      <module name="blog-service-info" target="1.8" />
+      <module name="blog-service-info-api" target="1.8" />
+      <module name="blog-service-message" target="1.8" />
+      <module name="blog-service-message-api" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="blog-common" options="-parameters" />
+      <module name="blog-gateway" options="" />
+      <module name="blog-gateway-web" options="-parameters" />
+      <module name="blog-parent" options="" />
+      <module name="blog-registry" options="-parameters" />
+      <module name="blog-service" options="" />
+      <module name="blog-service-about" options="-parameters" />
+      <module name="blog-service-about-api" options="-parameters" />
+      <module name="blog-service-api" options="" />
+      <module name="blog-service-article" options="-parameters" />
+      <module name="blog-service-article-api" options="-parameters" />
+      <module name="blog-service-info" options="-parameters" />
+      <module name="blog-service-info-api" options="-parameters" />
+      <module name="blog-service-message" options="-parameters" />
+      <module name="blog-service-message-api" options="-parameters" />
+    </option>
+  </component>
+</project>

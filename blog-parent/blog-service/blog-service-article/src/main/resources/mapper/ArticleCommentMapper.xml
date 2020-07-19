@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.macsen.article.mapper.ArticleCommentMapper">
+
+    <resultMap id="articleCommentAndReply" type="ArticleComment">
+        <id column="article_comment_id" property="id" />
+        <result column="article_comment_name" property="name" />
+        <result column="article_comment_comment" property="comment" />
+        <result column="article_comment_mail" property="mail" />
+        <result column="article_comment_system_info" property="systemInfo" />
+        <result column="article_comment_article_id" property="articleId" />
+        <result column="article_comment_create_time" property="createTime" />
+        <result column="article_comment_is_review" property="isReview" />
+        <result column="article_comment_is_author" property="isAuthor" />
+        <collection property="replies" ofType="ArticleReply">
+            <id column="article_reply_from_id" property="fromId" />
+            <result column="article_reply_from_name" property="fromName" />
+            <result column="article_reply_to_id" property="toId" />
+            <result column="article_reply_to_name" property="toName" />
+            <result column="article_reply_reply_type" property="replyType" />
+            <result column="article_reply_comment_id" property="commentId" />
+            <result column="article_reply_comment" property="comment" />
+            <result column="article_reply_mail" property="mail" />
+            <result column="article_reply_system_info" property="systemInfo" />
+            <result column="article_reply_create_time" property="createTime" />
+            <result column="article_reply_is_author" property="isAuthor" />
+            <result column="article_reply_is_review" property="isReview" />
+        </collection>
+    </resultMap>
+
+    <select id="findCommentByArticleId" resultMap="articleCommentAndReply">
+        SELECT
+            article_comment.id article_comment_id,
+            article_comment.name article_comment_name,
+            article_comment.comment article_comment_comment,
+            article_comment.mail article_comment_mail,
+            article_comment.system_info article_comment_system_info,
+            article_comment.article_id article_comment_article_id,
+            article_comment.create_time article_comment_create_time,
+            article_comment.is_review article_comment_is_review,
+            article_comment.is_author article_comment_is_author,
+            article_reply.from_id article_reply_from_id,
+            article_reply.from_name article_reply_from_name,
+            article_reply.to_id article_reply_to_id,
+            article_reply.to_name article_reply_to_name,
+            article_reply.reply_type article_reply_reply_type,
+            article_reply.comment_id article_reply_comment_id,
+            article_reply.comment article_reply_comment,
+            article_reply.mail article_reply_mail,
+            article_reply.system_info article_reply_system_info,
+            article_reply.create_time article_reply_create_time,
+            article_reply.is_author article_reply_is_author,
+            article_reply.is_review article_reply_is_review
+        FROM
+            article_comment
+        LEFT JOIN
+		    article_reply
+        ON
+            article_comment.id = article_reply.comment_id
+        WHERE
+            article_comment.article_id = #{articleId}
+        ORDER BY
+            article_comment.id ASC
+    </select>
+</mapper>

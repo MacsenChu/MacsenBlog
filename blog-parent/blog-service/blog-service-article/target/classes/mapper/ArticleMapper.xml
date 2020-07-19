@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.macsen.article.mapper.ArticleMapper">
+
+    <resultMap id="article" type="Article">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="cover" property="cover" />
+        <result column="author" property="author" />
+        <result column="avatar" property="avatar" />
+        <result column="content" property="content" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="likes_count" property="likesCount" />
+        <result column="read_count" property="readCount" />
+        <result column="comments_count" property="commentsCount" />
+        <result column="category_id" property="categoryId" />
+        <result column="original_url" property="originalUrl" />
+        <result column="is_original" property="isOriginal" />
+        <result column="is_publish" property="isPublish" />
+        <association property="category" javaType="Category">
+            <id column="category_id" property="id" />
+            <result column="category" property="category" />
+            <result column="category_count" property="count" />
+        </association>
+        <collection property="tags" ofType="Tag">
+            <id column="tag_id" property="id" />
+            <result column="tag" property="tag" />
+            <result column="tag_count" property="count" />
+        </collection>
+    </resultMap>
+
+    <select id="findByPage" resultMap="article">
+        SELECT
+            articles.*, categories.id category_id, categories.category, categories.count category_count, tags.id tag_id, tags.tag, tags.count tag_count
+        FROM
+            articles, categories, tags, article_tag
+        WHERE
+            articles.id in (SELECT t.id FROM (SELECT id FROM articles WHERE articles.is_publish = 1 ORDER BY create_time ASC LIMIT #{offset}, #{limit}) t)
+        AND
+            articles.category_id = categories.id
+        AND
+            article_tag.article_id = articles.id
+        AND
+            article_tag.tag_id = tags.id
+    </select>
+
+    <select id="findById" resultMap="article">
+        SELECT
+            articles.*, article_content.content, categories.id category_id, categories.category, categories.count category_count, tags.id tag_id, tags.tag, tags.count tag_count
+        FROM
+            articles, article_content, categories, tags, article_tag
+        WHERE
+            articles.id = #{id}
+        AND
+	        article_content.id = #{id}
+        AND
+            articles.category_id = categories.id
+        AND
+            article_tag.article_id = articles.id
+        AND
+            article_tag.tag_id = tags.id
+    </select>
+
+    <select id="findPreArticle" resultMap="article">
+        SELECT * FROM articles WHERE id &lt; #{id} ORDER BY id DESC LIMIT 1
+    </select>
+
+    <select id="findNextArticle" resultMap="article">
+        SELECT * FROM articles WHERE id &gt;  #{id} ORDER BY id ASC LIMIT 1
+    </select>
+
+    <select id="findByCategoryId" resultMap="article">
+        SELECT
+            articles.*, categories.id category_id, categories.category, categories.count category_count, tags.id tag_id, tags.tag, tags.count tag_count
+        FROM
+            articles, article_content, categories, tags, article_tag
+        WHERE
+            articles.id in (SELECT t.id FROM (SELECT id FROM articles WHERE articles.is_publish = 1 ORDER BY create_time ASC LIMIT #{offset}, #{limit}) t)
+        AND
+            articles.category_id = #{categoryId}
+        AND
+            articles.category_id = categories.id
+        AND
+            article_tag.article_id = articles.id
+        AND
+            article_tag.tag_id = tags.id
+    </select>
+
+    <select id="count" resultType="long">
+        SELECT count(0) FROM articles
+    </select>
+
+    <update id="updateCommentsCount">
+        UPDATE articles SET comments_count = comments_count + 1 WHERE id = #{articleId}
+    </update>
+
+    <update id="articleLike">
+        UPDATE articles SET likes_count = likes_count + 1 WHERE id = #{id}
+    </update>
+
+    <update id="articleUnLike">
+        UPDATE articles SET likes_count = likes_count - 1 WHERE id = #{id}
+    </update>
+
+    <select id="findPublishStatistics" resultType="PublishStatistics">
+        SELECT
+	        v.month month,
+            ifnull(a.total, 0) total
+        FROM
+            past_12_month_view v
+        LEFT JOIN
+            (
+                SELECT
+                    DATE_FORMAT(a.create_time, '%Y-%m') month, count(a.id) total
+                FROM
+                    articles a
+                WHERE
+                    DATE_FORMAT(a.create_time, '%Y-%m') > DATE_FORMAT(date_sub(curdate(), INTERVAL 12 MONTH), '%Y-%m')
+                GROUP BY
+                    `month`
+            ) a
+        ON
+            v.month = a.month
+        GROUP BY
+            v.month, a.total
+        ORDER BY
+            v.month ASC
+    </select>
+</mapper>

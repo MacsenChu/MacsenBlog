@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/MacsenBlog.iml" filepath="$PROJECT_DIR$/.idea/MacsenBlog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-common/blog-common.iml" filepath="$PROJECT_DIR$/blog-parent/blog-common/blog-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-gateway/blog-gateway.iml" filepath="$PROJECT_DIR$/blog-parent/blog-gateway/blog-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-gateway/blog-gateway-web/blog-gateway-web.iml" filepath="$PROJECT_DIR$/blog-parent/blog-gateway/blog-gateway-web/blog-gateway-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-parent.iml" filepath="$PROJECT_DIR$/blog-parent/blog-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-registry/blog-registry.iml" filepath="$PROJECT_DIR$/blog-parent/blog-registry/blog-registry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service/blog-service.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service/blog-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service/blog-service-about/blog-service-about.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service/blog-service-about/blog-service-about.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-about-api/blog-service-about-api.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-about-api/blog-service-about-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-api.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service/blog-service-article/blog-service-article.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service/blog-service-article/blog-service-article.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-article-api/blog-service-article-api.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-article-api/blog-service-article-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service/blog-service-info/blog-service-info.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service/blog-service-info/blog-service-info.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-info-api/blog-service-info-api.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-info-api/blog-service-info-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service/blog-service-message/blog-service-message.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service/blog-service-message/blog-service-message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-message-api/blog-service-message-api.iml" filepath="$PROJECT_DIR$/blog-parent/blog-service-api/blog-service-message-api/blog-service-message-api.iml" />
+    </modules>
+  </component>
+</project>
